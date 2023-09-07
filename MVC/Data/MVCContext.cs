@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MVC.Models;
 
 namespace MVC.Data
 {
     public class MVCContext : DbContext
     {
-        public MVCContext (DbContextOptions<MVCContext> options)
+        public MVCContext(DbContextOptions<MVCContext> options)
             : base(options)
         {
         }
 
-        public DbSet<MVC.Models.Department> Department { get; set; } = default!;
+        public DbSet<Department> Department { get; set; } = default!;
+        public DbSet<Seller> Sellers { get; set; } = default!;
+        public DbSet<SalesRecord> SalesRecords { get; set; } = default!;
     }
 }
