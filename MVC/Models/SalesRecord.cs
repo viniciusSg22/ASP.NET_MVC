@@ -1,4 +1,5 @@
 ﻿using MVC.Models.Enums;
+using MVC.Models.Logs;
 
 namespace MVC.Models;
 
@@ -9,6 +10,7 @@ public class SalesRecord
     public double Amount { get; set; }
     public SaleStatus Status { get; set; }
     public Seller Seller { get; set; }
+    public ICollection<SalesLog> SalesLog { get; set; } = new List<SalesLog>();
 
     public SalesRecord()
     {

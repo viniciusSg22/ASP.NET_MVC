@@ -8,10 +8,12 @@ namespace MVC.Controllers;
 public class DepartmentsController : Controller
 {
     private readonly MVCContext _context;
+    private readonly ILogger<HomeController> _logger;
 
-    public DepartmentsController(MVCContext context)
+    public DepartmentsController(MVCContext context, ILogger<HomeController> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     // GET: Departments
@@ -57,6 +59,8 @@ public class DepartmentsController : Controller
         {
             _context.Add(department);
             await _context.SaveChangesAsync();
+            _logger.LogInformation("Novo departamento criado: {department}", department.Name);
+
             return RedirectToAction(nameof(Index));
         }
         return View(department);
