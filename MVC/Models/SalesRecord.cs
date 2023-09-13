@@ -9,7 +9,7 @@ public class SalesRecord
     public DateTime Date { get; set; }
     public double Amount { get; set; }
     public SaleStatus Status { get; set; }
-    public Seller Seller { get; set; }
+    public Seller Seller { get; set; } = new Seller();
     public ICollection<SalesLog> SalesLog { get; set; } = new List<SalesLog>();
 
     public SalesRecord()

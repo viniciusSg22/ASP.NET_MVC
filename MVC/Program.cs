@@ -4,8 +4,10 @@ using MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+string connectionString = builder.Configuration.GetConnectionString("MVCContext") ?? "Server=localhost;userid=root2;password=12345678;database=mvc_project";
+
 builder.Services.AddDbContext<MVCContext>(options =>
-    options.UseMySQL(connectionString: builder.Configuration.GetConnectionString("MVCContext"), builder => builder.MigrationsAssembly("MVC")));
+    options.UseMySQL(connectionString: connectionString, builder => builder.MigrationsAssembly("MVC")));
 
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
