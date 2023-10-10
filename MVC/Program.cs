@@ -6,11 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 string connectionString = builder.Configuration.GetConnectionString("MVCContext") ?? "Server=localhost;userid=root2;password=12345678;database=mvc_project";
 
-builder.Services.AddDbContext<MVCContext>(options =>
-    options.UseMySQL(connectionString: connectionString, builder => builder.MigrationsAssembly("MVC")));
+builder.Services.AddDbContext<MVCContext>(options => options.UseMySQL(connectionString, builder => builder.MigrationsAssembly("MVC")));
 
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
+builder.Services.AddScoped<DepartmentService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
